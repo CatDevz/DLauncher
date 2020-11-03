@@ -21,6 +21,7 @@ import app.dlauncher.data.Constants
 import app.dlauncher.data.Prefs
 import app.dlauncher.helper.openAppInfo
 import app.dlauncher.helper.showToastLong
+import app.dlauncher.listener.OnSwipeTouchListener
 import kotlinx.android.synthetic.main.fragment_app_drawer.*
 
 
@@ -53,6 +54,8 @@ class AppDrawerFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = appAdapter
         recyclerView.addOnScrollListener(getRecyclerViewOnScrollListener())
+
+        dateTimeLayout.setOnTouchListener(getClockGestureListener(requireContext()))
 
         if (flag == Constants.FLAG_HIDDEN_APPS) search.queryHint = "Hidden apps"
         search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -88,7 +91,6 @@ class AppDrawerFragment : Fragment() {
         viewModel.firstOpen.observe(viewLifecycleOwner, Observer {
             if (it) {
                 appDrawerTip.visibility = View.VISIBLE
-                search.queryHint = getString(R.string.type_to_search)
             }
         })
     }
@@ -125,7 +127,7 @@ class AppDrawerFragment : Fragment() {
     private fun appClickListener(viewModel: MainViewModel, flag: Int):
                 (appModel: AppModel) -> Unit =
         { appModel ->
-            viewModel.selectedApp(appModel, flag)
+            viewModel.selectedApp(appModel, 100)
             findNavController().popBackStack()
         }
 
@@ -153,10 +155,21 @@ class AppDrawerFragment : Fragment() {
 
             if (newSet.isEmpty()) findNavController().popBackStack()
             if (prefs.firstHide) {
-                showToastLong(requireContext(), "Tap Olauncher in settings to see hidden apps")
+                showToastLong(requireContext(), "Tap DLauncher in settings to see hidden apps")
                 prefs.firstHide = false
             }
         }
+
+    private fun getClockGestureListener(context: Context): View.OnTouchListener {
+        return object : OnSwipeTouchListener(context) {
+            override fun onDoubleClick() {
+                super.onDoubleClick()
+                try {
+                    findNavController().navigate(R.id.action_appListFragment_to_settingsFragment)
+                } catch (e: java.lang.Exception) {}
+            }
+        }
+    }
 
     private fun getRecyclerViewOnScrollListener(): RecyclerView.OnScrollListener {
         return object : RecyclerView.OnScrollListener() {

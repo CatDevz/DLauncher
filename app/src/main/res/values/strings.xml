@@ -35,8 +35,7 @@
     <string name="_6">6</string>
     <string name="_7">7</string>
     <string name="_8">8</string>
-    <string name="scroll_to_hide_keyboard">Scroll to hide keyboard</string>
-    <string name="type_to_search">Type to search</string>
+    <string name="swipe_down_to_search">Swipe down to search.</string>
     <string name="swipe_left_right_apps">Swipe left right apps</string>
     <string name="_0">0</string>
     <string name="okay_got_it">Okay, got it</string>

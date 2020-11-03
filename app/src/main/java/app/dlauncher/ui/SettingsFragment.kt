@@ -177,11 +177,6 @@ class SettingsFragment : Fragment(), View.OnClickListener, View.OnLongClickListe
             showToastShort(requireContext(), "Your wallpaper will update shortly")
     }
 
-    private fun updateHomeAppsNum(num: Int) {
-        prefs.homeAppsNum = num
-        viewModel.refreshHome(true)
-    }
-
     private fun toggleKeyboardText() {
         prefs.autoShowKeyboard = !prefs.autoShowKeyboard
         populateKeyboardText()
@@ -207,43 +202,6 @@ class SettingsFragment : Fragment(), View.OnClickListener, View.OnLongClickListe
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(url)
         startActivity(intent)
-    }
-
-    private fun shareApp() {
-        val message = "You should use your phone, not the other way round. -Olauncher\n" +
-                Constants.URL_OLAUNCHER_PLAY_STORE
-        val sendIntent: Intent = Intent().apply {
-            action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, message)
-            type = "text/plain"
-        }
-
-        val shareIntent = Intent.createChooser(sendIntent, null)
-        startActivity(shareIntent)
-    }
-
-    private fun rateApp() {
-        val intent = Intent(
-            Intent.ACTION_VIEW,
-            Uri.parse(Constants.URL_OLAUNCHER_PLAY_STORE)
-        )
-        var flags = Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_MULTIPLE_TASK
-        flags = flags or Intent.FLAG_ACTIVITY_NEW_DOCUMENT
-        intent.addFlags(flags)
-        startActivity(intent)
-    }
-
-    private fun sendEmailIntent() {
-        val emailIntent = Intent(Intent.ACTION_SENDTO)
-        emailIntent.data = Uri.parse(
-            "mailto:thetanuj1@gmail.com?" +
-                    "subject=Hello%20Team%20Olauncher!"
-        )
-        try {
-            startActivity(emailIntent)
-        } catch (e: Exception) {
-            showToastLong(requireContext(), "Failed! Send email to thetanuj1@gmail.com")
-        }
     }
 
     private fun populateSwipeApps() {

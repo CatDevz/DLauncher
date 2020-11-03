@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
@@ -39,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="136dp"
-        android:text="@string/scroll_to_hide_keyboard"
+        android:text="@string/swipe_down_to_search"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -60,6 +61,7 @@
         android:paddingHorizontal="8dp"
         android:paddingVertical="0dp"
         android:textCursorDrawable="@null"
+        android:visibility="gone"
         app:closeIcon="@null"
         app:iconifiedByDefault="false"
         app:queryBackground="@null"
