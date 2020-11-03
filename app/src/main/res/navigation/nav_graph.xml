@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/appListFragment"
-        android:name="app.olauncher.ui.AppDrawerFragment"
+        android:name="app.dlauncher.ui.AppDrawerFragment"
         android:label="app_list_fragment"
         tools:layout="@layout/fragment_app_drawer" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="app.olauncher.ui.SettingsFragment"
+        android:name="app.dlauncher.ui.SettingsFragment"
         android:label="SettingsFragment"
         android:layout="@layout/fragment_settings">
         <action

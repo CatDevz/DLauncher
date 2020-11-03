@@ -1,4 +1,4 @@
-package app.olauncher.ui
+package app.dlauncher.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -14,13 +14,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import app.olauncher.MainViewModel
-import app.olauncher.R
-import app.olauncher.data.AppModel
-import app.olauncher.data.Constants
-import app.olauncher.data.Prefs
-import app.olauncher.helper.openAppInfo
-import app.olauncher.helper.showToastLong
+import app.dlauncher.MainViewModel
+import app.dlauncher.R
+import app.dlauncher.data.AppModel
+import app.dlauncher.data.Constants
+import app.dlauncher.data.Prefs
+import app.dlauncher.helper.openAppInfo
+import app.dlauncher.helper.showToastLong
 import kotlinx.android.synthetic.main.fragment_app_drawer.*
 
 

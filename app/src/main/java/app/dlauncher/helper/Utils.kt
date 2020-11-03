@@ -1,4 +1,4 @@
-package app.olauncher.helper
+package app.dlauncher.helper
 
 import android.app.WallpaperManager
 import android.content.ComponentName
@@ -13,10 +13,10 @@ import android.provider.Settings
 import android.view.Gravity
 import android.view.WindowManager
 import android.widget.Toast
-import app.olauncher.BuildConfig
-import app.olauncher.data.AppModel
-import app.olauncher.data.Constants
-import app.olauncher.data.Prefs
+import app.dlauncher.BuildConfig
+import app.dlauncher.data.AppModel
+import app.dlauncher.data.Constants
+import app.dlauncher.data.Prefs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject

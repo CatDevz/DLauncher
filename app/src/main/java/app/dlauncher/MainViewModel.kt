@@ -1,4 +1,4 @@
-package app.olauncher
+package app.dlauncher
 
 import android.app.Application
 import android.content.ComponentName
@@ -11,10 +11,10 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.work.*
-import app.olauncher.data.AppModel
-import app.olauncher.data.Constants
-import app.olauncher.data.Prefs
-import app.olauncher.helper.*
+import app.dlauncher.data.AppModel
+import app.dlauncher.data.Constants
+import app.dlauncher.data.Prefs
+import app.dlauncher.helper.*
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 

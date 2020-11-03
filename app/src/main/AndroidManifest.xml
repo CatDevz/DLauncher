@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="app.olauncher">
+    package="app.dlauncher">
 
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".MainActivity"
+            android:name="app.dlauncher.MainActivity"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
             android:taskAffinity=""
@@ -34,7 +34,7 @@
         </activity>
 
         <activity
-            android:name=".helper.FakeHomeActivity"
+            android:name="app.dlauncher.helper.FakeHomeActivity"
             android:enabled="false"
             android:launchMode="singleTask"
             android:windowSoftInputMode="stateHidden">
@@ -48,7 +48,7 @@
         </activity>
 
         <receiver
-            android:name=".listener.DeviceAdmin"
+            android:name="app.dlauncher.listener.DeviceAdmin"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data
                 android:name="android.app.device_admin"

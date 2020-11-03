@@ -1,4 +1,4 @@
-package app.olauncher.ui
+package app.dlauncher.ui
 
 import android.app.admin.DevicePolicyManager
 import android.content.ComponentName
@@ -8,26 +8,24 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import app.olauncher.BuildConfig
-import app.olauncher.MainViewModel
-import app.olauncher.R
-import app.olauncher.data.Constants
-import app.olauncher.data.Prefs
-import app.olauncher.helper.isOlauncherDefault
-import app.olauncher.helper.openAppInfo
-import app.olauncher.helper.showToastLong
-import app.olauncher.helper.showToastShort
-import app.olauncher.listener.DeviceAdmin
+import app.dlauncher.BuildConfig
+import app.dlauncher.MainViewModel
+import app.dlauncher.R
+import app.dlauncher.data.Constants
+import app.dlauncher.data.Prefs
+import app.dlauncher.helper.isOlauncherDefault
+import app.dlauncher.helper.openAppInfo
+import app.dlauncher.helper.showToastLong
+import app.dlauncher.helper.showToastShort
+import app.dlauncher.listener.DeviceAdmin
 import kotlinx.android.synthetic.main.fragment_settings.*
 
 

@@ -1,4 +1,4 @@
-package app.olauncher.ui
+package app.dlauncher.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +7,9 @@ import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import app.olauncher.R
-import app.olauncher.data.AppModel
-import app.olauncher.data.Constants
+import app.dlauncher.R
+import app.dlauncher.data.AppModel
+import app.dlauncher.data.Constants
 import kotlinx.android.synthetic.main.adapter_app_drawer.view.*
 
 class AppDrawerAdapter(
