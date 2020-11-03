@@ -1,3 +1,5 @@
+[Fork Information](https://github.com/CatDevz/DLauncher#fork-information)
+
 # DLauncher | More than minimal
 DLauncher is a minimal launcher for Android. Dlauncher does not contain any ads, can automatically change your wallpaper daily, and has a clean user interface.
 
