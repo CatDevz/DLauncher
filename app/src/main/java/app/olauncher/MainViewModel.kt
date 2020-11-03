@@ -39,54 +39,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             Constants.FLAG_HIDDEN_APPS -> {
                 launchApp(appModel.appPackage, appModel.user)
             }
-            Constants.FLAG_SET_HOME_APP_1 -> {
-                prefs.appName1 = appModel.appLabel
-                prefs.appPackage1 = appModel.appPackage
-                prefs.appUser1 = appModel.user.toString()
-                refreshHome(false)
-            }
-            Constants.FLAG_SET_HOME_APP_2 -> {
-                prefs.appName2 = appModel.appLabel
-                prefs.appPackage2 = appModel.appPackage
-                prefs.appUser2 = appModel.user.toString()
-                refreshHome(false)
-            }
-            Constants.FLAG_SET_HOME_APP_3 -> {
-                prefs.appName3 = appModel.appLabel
-                prefs.appPackage3 = appModel.appPackage
-                prefs.appUser3 = appModel.user.toString()
-                refreshHome(false)
-            }
-            Constants.FLAG_SET_HOME_APP_4 -> {
-                prefs.appName4 = appModel.appLabel
-                prefs.appPackage4 = appModel.appPackage
-                prefs.appUser4 = appModel.user.toString()
-                refreshHome(false)
-            }
-            Constants.FLAG_SET_HOME_APP_5 -> {
-                prefs.appName5 = appModel.appLabel
-                prefs.appPackage5 = appModel.appPackage
-                prefs.appUser5 = appModel.user.toString()
-                refreshHome(false)
-            }
-            Constants.FLAG_SET_HOME_APP_6 -> {
-                prefs.appName6 = appModel.appLabel
-                prefs.appPackage6 = appModel.appPackage
-                prefs.appUser6 = appModel.user.toString()
-                refreshHome(false)
-            }
-            Constants.FLAG_SET_HOME_APP_7 -> {
-                prefs.appName7 = appModel.appLabel
-                prefs.appPackage7 = appModel.appPackage
-                prefs.appUser7 = appModel.user.toString()
-                refreshHome(false)
-            }
-            Constants.FLAG_SET_HOME_APP_8 -> {
-                prefs.appName8 = appModel.appLabel
-                prefs.appPackage8 = appModel.appPackage
-                prefs.appUser8 = appModel.user.toString()
-                refreshHome(false)
-            }
             Constants.FLAG_SET_SWIPE_LEFT_APP -> {
                 prefs.appNameSwipeLeft = appModel.appLabel
                 prefs.appPackageSwipeLeft = appModel.appPackage
@@ -178,11 +130,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun updateHomeAlignment() {
-        when (prefs.homeAlignment) {
-            Gravity.START -> prefs.homeAlignment = Gravity.END
-            Gravity.END -> prefs.homeAlignment = Gravity.CENTER
-            Gravity.CENTER -> prefs.homeAlignment = Gravity.START
-        }
-        homeAppAlignment.value = prefs.homeAlignment
+        homeAppAlignment.value = Gravity.START
     }
 }

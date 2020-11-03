@@ -61,19 +61,15 @@ class SettingsFragment : Fragment(), View.OnClickListener, View.OnLongClickListe
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P)
             experimental.visibility = View.GONE
 
-        homeAppsNum.text = prefs.homeAppsNum.toString()
         populateKeyboardText()
         populateLockSettings()
         populateWallpaperText()
-        populateAlignment()
         populateSwipeApps()
-        populateActionHints()
         initClickListeners()
         initObservers()
     }
 
     override fun onClick(view: View) {
-        appsNumSelectLayout.visibility = View.GONE
         when (view.id) {
             R.id.olauncherHiddenApps -> showHiddenApps()
             R.id.appInfo -> openAppInfo(requireContext(), BuildConfig.APPLICATION_ID)
@@ -82,29 +78,11 @@ class SettingsFragment : Fragment(), View.OnClickListener, View.OnLongClickListe
             R.id.autoShowKeyboard -> toggleKeyboardText()
             R.id.doubleTapText -> openEditSettingsPermission()
             R.id.experimental -> openEditSettingsPermission()
-            R.id.homeAppsNum -> appsNumSelectLayout.visibility = View.VISIBLE
             R.id.dailyWallpaperUrl -> openUrl(prefs.dailyWallpaperUrl)
             R.id.dailyWallpaper -> toggleDailyWallpaperUpdate()
-            R.id.alignment -> viewModel.updateHomeAlignment()
-
-            R.id.maxApps0 -> updateHomeAppsNum(0)
-            R.id.maxApps1 -> updateHomeAppsNum(1)
-            R.id.maxApps2 -> updateHomeAppsNum(2)
-            R.id.maxApps3 -> updateHomeAppsNum(3)
-            R.id.maxApps4 -> updateHomeAppsNum(4)
-            R.id.maxApps5 -> updateHomeAppsNum(5)
-            R.id.maxApps6 -> updateHomeAppsNum(6)
-            R.id.maxApps7 -> updateHomeAppsNum(7)
-            R.id.maxApps8 -> updateHomeAppsNum(8)
 
             R.id.swipeLeftApp -> showAppList(Constants.FLAG_SET_SWIPE_LEFT_APP)
             R.id.swipeRightApp -> showAppList(Constants.FLAG_SET_SWIPE_RIGHT_APP)
-
-            R.id.about -> openUrl(Constants.URL_ABOUT_OLAUNCHER)
-            R.id.share -> shareApp()
-            R.id.rate -> rateApp()
-            R.id.email -> sendEmailIntent()
-            R.id.privacy -> openUrl(Constants.URL_OLAUNCHER_PRIVACY)
         }
     }
 
@@ -125,28 +103,10 @@ class SettingsFragment : Fragment(), View.OnClickListener, View.OnLongClickListe
         toggleLock.setOnClickListener(this)
         doubleTapText.setOnClickListener(this)
         experimental.setOnClickListener(this)
-        homeAppsNum.setOnClickListener(this)
         dailyWallpaperUrl.setOnClickListener(this)
         dailyWallpaper.setOnClickListener(this)
-        alignment.setOnClickListener(this)
         swipeLeftApp.setOnClickListener(this)
         swipeRightApp.setOnClickListener(this)
-
-        about.setOnClickListener(this)
-        share.setOnClickListener(this)
-        rate.setOnClickListener(this)
-        email.setOnClickListener(this)
-        privacy.setOnClickListener(this)
-
-        maxApps0.setOnClickListener(this)
-        maxApps1.setOnClickListener(this)
-        maxApps2.setOnClickListener(this)
-        maxApps3.setOnClickListener(this)
-        maxApps4.setOnClickListener(this)
-        maxApps5.setOnClickListener(this)
-        maxApps6.setOnClickListener(this)
-        maxApps7.setOnClickListener(this)
-        maxApps8.setOnClickListener(this)
 
         swipeLeftApp.setOnLongClickListener(this)
         swipeRightApp.setOnLongClickListener(this)
@@ -158,9 +118,6 @@ class SettingsFragment : Fragment(), View.OnClickListener, View.OnLongClickListe
                 setLauncher.text = getString(R.string.change_default_launcher)
                 prefs.toShowHintCounter = prefs.toShowHintCounter + 1
             }
-        })
-        viewModel.homeAppAlignment.observe(viewLifecycleOwner, Observer<Int> {
-            populateAlignment()
         })
         viewModel.updateSwipeApps.observe(viewLifecycleOwner, Observer<Any> {
             populateSwipeApps()
@@ -223,8 +180,6 @@ class SettingsFragment : Fragment(), View.OnClickListener, View.OnLongClickListe
     }
 
     private fun updateHomeAppsNum(num: Int) {
-        homeAppsNum.text = num.toString()
-        appsNumSelectLayout.visibility = View.GONE
         prefs.homeAppsNum = num
         viewModel.refreshHome(true)
     }
@@ -242,14 +197,6 @@ class SettingsFragment : Fragment(), View.OnClickListener, View.OnLongClickListe
     private fun populateWallpaperText() {
         if (prefs.dailyWallpaper) dailyWallpaper.text = getString(R.string.on)
         else dailyWallpaper.text = getString(R.string.off)
-    }
-
-    private fun populateAlignment() {
-        when (prefs.homeAlignment) {
-            Gravity.START -> alignment.text = getString(R.string.left)
-            Gravity.CENTER -> alignment.text = getString(R.string.center)
-            Gravity.END -> alignment.text = getString(R.string.right)
-        }
     }
 
     private fun populateLockSettings() {
@@ -312,27 +259,6 @@ class SettingsFragment : Fragment(), View.OnClickListener, View.OnLongClickListe
             R.id.action_settingsFragment_to_appListFragment,
             bundleOf("flag" to flag)
         )
-    }
-
-    private fun populateActionHints() {
-        when {
-            prefs.toShowHintCounter == Constants.HINT_ABOUT_US -> {
-                Toast.makeText(context, getString(R.string.about_hint), Toast.LENGTH_LONG).show()
-                about.setCompoundDrawablesWithIntrinsicBounds(0, android.R.drawable.arrow_down_float, 0, 0)
-            }
-            prefs.toShowHintCounter == Constants.HINT_EMAIL_US -> {
-                Toast.makeText(context, getString(R.string.email_us_hint), Toast.LENGTH_LONG).show()
-                email.setCompoundDrawablesWithIntrinsicBounds(0, android.R.drawable.arrow_down_float, 0, 0)
-            }
-            prefs.toShowHintCounter in Constants.HINT_RATE_US..Constants.HINT_RATE_US + 1 -> {
-                Toast.makeText(context, getString(R.string.rate_us_hint), Toast.LENGTH_LONG).show()
-                rate.setCompoundDrawablesWithIntrinsicBounds(0, android.R.drawable.arrow_down_float, 0, 0)
-            }
-            prefs.toShowHintCounter % Constants.HINT_DONATE == 0 -> {
-                Toast.makeText(context, getString(R.string.donate_hint), Toast.LENGTH_LONG).show()
-                about.setCompoundDrawablesWithIntrinsicBounds(0, android.R.drawable.arrow_down_float, 0, 0)
-            }
-        }
     }
 
     private fun openEditSettingsPermission() {

@@ -6,20 +6,31 @@
     android:animateLayoutChanges="true"
     android:background="@color/colorPrimaryInverseTrans10">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search"
+    <LinearLayout
+        android:id="@+id/dateTimeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:paddingHorizontal="8dp"
-        android:paddingVertical="0dp"
-        android:textCursorDrawable="@null"
-        app:closeIcon="@null"
-        app:iconifiedByDefault="false"
-        app:queryBackground="@null"
-        app:queryHint="__"
-        app:searchIcon="@null"
-        app:theme="@style/AppSearchText" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="vertical">
+
+        <TextClock
+            android:id="@+id/clock"
+            style="@style/TextLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:format12Hour="hh:mm"
+            android:textSize="42sp" />
+
+        <TextClock
+            android:id="@+id/date"
+            style="@style/TextMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:format12Hour="EEE, dd MMM"
+            android:format24Hour="EEE, dd MMM" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/appDrawerTip"
@@ -40,5 +51,20 @@
         android:clipToPadding="false"
         android:overScrollMode="never"
         android:paddingBottom="48dp" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="0dp"
+        android:textCursorDrawable="@null"
+        app:closeIcon="@null"
+        app:iconifiedByDefault="false"
+        app:queryBackground="@null"
+        app:queryHint="__"
+        app:searchIcon="@null"
+        app:theme="@style/AppSearchText" />
 
 </FrameLayout>

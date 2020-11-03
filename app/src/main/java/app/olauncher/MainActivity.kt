@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
     override fun onBackPressed() {
-        if (navController.currentDestination?.id != R.id.mainFragment)
+        if (navController.currentDestination?.id != R.id.appListFragment)
             super.onBackPressed()
     }
 
@@ -86,8 +86,8 @@ class MainActivity : AppCompatActivity() {
     private fun backToHomeScreen() {
         // Whenever home button is pressed or user leaves the launcher,
         // pop all the fragments except main
-        if (navController.currentDestination?.id != R.id.mainFragment)
-            navController.popBackStack(R.id.mainFragment, false)
+        if (navController.currentDestination?.id != R.id.appListFragment)
+            navController.popBackStack(R.id.appListFragment, false)
     }
 
     private fun openLauncherChooser(resetFailed: Boolean) {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Olauncher</string>
+    <string name="app_name">DLauncher</string>
     <string name="app">App</string>
     <string name="superscript">ᵂ</string>
     <string name="set_as_default_launcher">Set as default launcher</string>
@@ -13,10 +13,7 @@
     <string name="black">Black</string>
     <string name="white">White</string>
     <string name="change_default_launcher">Change default launcher</string>
-    <string name="privacy">Privacy</string>
-    <string name="share">Share</string>
-    <string name="rate">Rate</string>
-    <string name="twitter">Twitter</string>
+    <string name="fork_info">DLauncher is a fork of Olauncher.</string>
     <string name="email">Email</string>
     <string name="github">Github</string>
     <string name="donate">Donate</string>
